@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Scene Builder</title>
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>    
+        <script
+            src="https://rawgit.com/blairmacintyre/aframe-look-at-billboard-component/master/dist/aframe-look-at-billboard-component.min.js"></script> 
+        <script>
+            AFRAME.registerComponent("foo", {
+                    init: function () {
+                        console.log('here')
+                        const video = document.querySelector("#video");
+                        this.el.addEventListener("materialtextureloaded", e => {
+                            let material = this.el.getObject3D("mesh").material;
+                            material.map.format = THREE.RGBAFormat;
+                            material.map.needsUpdate = true;
+                            console.log(video)
+                            video.play()
+                        });
+                    }
+                });
+        </script>
+    </head>
+    <body>
+    <a-scene>
+        <a-assets>
+            <a-asset-item id="balloon" src="./balloon/scene.gltf"></a-asset-item>
+            <a-asset-item id="balloonCluster" src="./balloon-cluster/scene.gltf"></a-asset-item>
+            <video id="video"  loop="false" preload="auto" src="willvid.mp4" playsinline></video>
+        </a-assets>
+        <!-- <a-box color="red" look-at="src: #player" position="0 1 -5" scale="0.5 0.5 5"></a-box> -->
+        <a-entity id="balloon-container" animation__spin="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 24000" >
+            <a-entity id="balloon1" gltf-model="#balloon" scale="0.1 0.1 0.1" position="1 3 -2"
+                animation="property: object3D.position.y; to: 3.2; dir: alternate; dur: 2000; loop: true"
+                animation__spin="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 6800"
+                animation__wobble="property: rotation; from: -9 0 9; to: 8 0 -10; dir: alternate; easing: easeInOutQuad; elasticity: 800; loop: true; dur: 1320"></a-entity>
+            <a-entity id="balloonClust" gltf-model="#balloonCluster" scale="0.2 0.2 0.2" position="-4 3.5 -1"
+                animation__bob="property: object3D.position.y; to: 3.2; dir: alternate; dur: 1500; loop: true"
+                animation__spin="property: rotation; to: 0 360 0; easing: linear; loop: true; dur: 5000"
+                animation__wobble="property: rotation; from: -7 0 6; to: 6 0 -6; dir: alternate; easing: easeInOutQuad; elasticity: 800; loop: true; dur: 1400"></a-entity>
+            <a-entity id="balloon3" gltf-model="#balloon" scale="0.1 0.1 0.1" position="2 3.2 3"
+                animation__bob="property: object3D.position.y; to: 4; dir: alternate; dur: 3000; loop: true"
+                animation__spin="property: rotation; to: 0 360 0; easing: easeInOutQuad; loop: true; dur: 4500"
+                animation__wobble="property: rotation; from: -8 0 9; to: 10 0 -8; dir: alternate; easing: easeInOutQuad; elasticity: 800; loop: true; dur: 1200"></a-entity>            
+        </a-entity>
+        <a-entity environment="preset: default; dressingAmount: 500"></a-entity>
+        <a-plane position="0 1 -2"
+            scale="1 1 1"
+            material="src: #video; transparent: true;"
+            foo></a-plane>
+            
+        </a-video>
+        <a-camera id="player" position="0 1.6 10" wasd-controls="fly: true;">
+            <a-cursor></a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+
+</html>
