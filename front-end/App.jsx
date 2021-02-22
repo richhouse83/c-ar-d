@@ -5,7 +5,11 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
-import * as FileSystem from 'expo-file-system';
+// import * as FileSystem from 'expo-file-system';
+// import { google } from 'googleapis';
+import { listFiles } from '../google-drive-api/functions';
+
+import { googleDriveApi } from '../google-drive-api/google';
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -51,6 +55,7 @@ export default function App() {
             onPress={async () => {
               let video = {};
               if (!recording) {
+                googleDriveApi(listFiles);
                 setRecording(true);
                 video = await cameraRef.recordAsync({
                   maxDuration: 5,
