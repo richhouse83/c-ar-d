@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { RNS3 } from 'react-native-upload-aws-s3';
 import { v4 as uuidv4 } from 'uuid';
+import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
 
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
@@ -66,8 +67,8 @@ export default class CameraPage extends React.Component {
       keyPrefix: 'uploads/',
       bucket: 'c-ar-d-video-storage',
       region: 'us-east-2',
-      accessKey: 'AKIAZYOOKGI7R2JJIOXM',
-      secretKey: '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',
+      accessKey: AWS_ACCESS_ID,
+      secretKey: AWS_SECRET_ID,
       successActionStatus: 201,
     };
     try {
