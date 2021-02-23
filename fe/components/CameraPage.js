@@ -66,7 +66,6 @@ export default class CameraPage extends React.Component {
     } else {
       this.setState({ recording: false });
       this.camera.stopRecording();
-      MediaLibrary.saveToLibraryAsync(video.uri);
     }
   };
   handleType = () => {
