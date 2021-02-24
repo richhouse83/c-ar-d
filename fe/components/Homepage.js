@@ -1,24 +1,67 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  SafeAreaView,
+} from 'react-native';
 
-export default function Homepage() {
+export default function App({ navigation, route }) {
   return (
-    <View style={styles.container}>
-      <Text>C-AR-D</Text>
-      <Button title="send-button" onPress={() => console.log('clicked send')} />
-      <Button
-        title="receive-button"
-        onPress={() => console.log('clicked receive')}
-      />
-    </View>
+    <ImageBackground
+      style={styles.background}
+      source={require('../assets/background.jpg')}
+    >
+      <View style={styles.container}>
+        <Text style={styles.text}>C-AR-D</Text>
+        <SafeAreaView style={createBtnStyle}>
+          <Button
+            color="white"
+            title="Create a C-AR-D"
+            onPress={() => console.log('clicked create')}
+          />
+        </SafeAreaView>
+        <SafeAreaView style={scanBtnStyle}>
+          <Button
+            color="white"
+            title="Scan a C-AR-D"
+            onPress={() => console.log('clicked scan')}
+          />
+        </SafeAreaView>
+      </View>
+    </ImageBackground>
   );
 }
+const createBtnStyle = {
+  backgroundColor: '#80CEE1',
+  width: 300,
+  position: 'absolute',
+  top: 300,
+  borderRadius: 50,
+};
+const scanBtnStyle = {
+  backgroundColor: '#DEA5A4',
+  width: 300,
+  position: 'absolute',
+  top: 380,
+  borderRadius: 50,
+};
 
 const styles = StyleSheet.create({
+  background: { flex: 1, justifyContent: 'flex-end' },
+
   container: {
     flex: 1,
-    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  text: {
+    position: 'absolute',
+    top: 150,
+    fontSize: 40,
+    fontWeight: 'bold',
   },
 });
