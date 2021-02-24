@@ -6,13 +6,14 @@ import { Permissions } from 'expo-permissions';
 import React, { Component } from 'react';
 
 import CameraPage from './components/CameraPage';
+import Homepage from './components/Homepage';
 
 export default class App extends Component {
   render() {
     return (
       <>
         <View>
-          <CameraPage />
+          <Homepage />
         </View>
       </>
     );
