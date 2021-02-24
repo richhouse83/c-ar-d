@@ -8,11 +8,12 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import background from '../assets/background.jpg';
-
-export default function App() {
+export default function App({ navigation, route }) {
   return (
-    <ImageBackground style={styles.background} source={background}>
+    <ImageBackground
+      style={styles.background}
+      source={require('../assets/background.jpg')}
+    >
       <View style={styles.container}>
         <Text style={styles.text}>C-AR-D</Text>
         <SafeAreaView style={createBtnStyle}>
