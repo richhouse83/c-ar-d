@@ -18,29 +18,29 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: 'Homepage' }}
+        />
+        <Stack.Screen
           name="Camera"
           component={Camera}
           options={{ title: 'Camera Page' }}
-        />
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{ title: 'Homepage' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-const Welcome = ({ navigation }) => {
+const Camera = ({ navigation }) => {
   return <Button title="scan a C-AR-D" onPress={() => navigation.navigate()} />;
 };
 
-const Camera = ({ navigation }) => {
+const Home = ({ navigation }) => {
   return (
     <Button
       title="send a C-AR-D"
-      onPress={() => navigation.navigate('Welcome')}
+      onPress={() => navigation.navigate('Camera')}
     />
   );
 };
