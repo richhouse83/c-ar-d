@@ -1,7 +1,13 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 
-import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import { Permissions } from 'expo-permissions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -27,27 +33,60 @@ const App = () => {
           component={Camera}
           options={{ title: 'Camera Page' }}
         />
+        <Stack.Screen
+          name="Send"
+          component={Send}
+          options={{ title: 'Send Page' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-const Camera = ({ navigation }) => {
-  return <Button title="scan a C-AR-D" onPress={() => navigation.navigate()} />;
-};
-
 const Home = ({ navigation }) => {
   return (
-    <Button
-      title="send a C-AR-D"
-      onPress={() => navigation.navigate('Camera')}
-    />
+    <View>
+      <TouchableOpacity
+        style={styling.button}
+        title="send a C-AR-D"
+        onPress={() => navigation.navigate('Send')}
+      >
+        <Text>Test button</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styling.button}
+        title="scan a C-AR-D"
+        onPress={() => navigation.navigate('Camera')}
+      >
+        <Text>Test button</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-// const CameraPage = ({Navigation}) => {
-//   return (
+const Camera = ({ navigation }) => {
+  return (
+    <TouchableOpacity
+      style={styling.button}
+      title="placeholder"
+      onPress={() => navigation.navigate()}
+    >
+      <Text>Test button</Text>
+    </TouchableOpacity>
+  );
+};
 
-//   )
-// }
+const Send = ({ navigation }) => {
+  return (
+    <Text>Text</Text>
+    // <TouchableOpacity title="send a C-AR-D" onPress={() => navigation.navigate('Send')} />
+  );
+};
+
+const styling = StyleSheet.create({
+  button: {
+    backgroundColor: '#DDDDDD',
+  },
+});
+
 export default App;
