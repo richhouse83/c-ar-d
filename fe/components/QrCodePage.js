@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import QRCode from 'react-native-qrcode-svg';
 
 import {
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 export default function QrCodePage({ navigation, route }) {
+  const { fileName } = route.params;
   return (
     <ImageBackground
       style={styles.background}
@@ -19,7 +20,7 @@ export default function QrCodePage({ navigation, route }) {
       <View style={styles.container}>
         <Text style={styles.title}>QrCode</Text>
         <QRCode
-          value="https://richhouse83.github.io/c-ar-d-viewer/?video="
+          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}`}
           size={200}
         />
       </View>
