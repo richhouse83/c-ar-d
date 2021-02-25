@@ -8,6 +8,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+passkeys.js
 
 # macOS
 .DS_Store
