@@ -25,17 +25,17 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={Homepage} // Links to the custom created homepage (With Dog)
           options={{ title: 'Homepage' }}
         />
         <Stack.Screen
           name="Camera"
-          component={Camera}
+          component={CameraPage} // Needs to link to the camera app the backend team made
           options={{ title: 'Camera Page' }}
         />
         <Stack.Screen
           name="Send"
-          component={Send}
+          component={Send} // Needs to
           options={{ title: 'Send Page' }}
         />
       </Stack.Navigator>
@@ -85,7 +85,10 @@ const Send = ({ navigation }) => {
 
 const styling = StyleSheet.create({
   button: {
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#80CEE1',
+    width: 300,
+    top: 300,
+    borderRadius: 50,
   },
 });
 

@@ -4,31 +4,33 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 
-export default function App({ navigation, route }) {
+export default function Homepage({ navigation, route }) {
   return (
     <ImageBackground
       style={styles.background}
       source={require('../assets/background.jpg')}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>C-AR-D</Text>
+        <Text style={styles.title}>C-AR-D</Text>
         <SafeAreaView style={createBtnStyle}>
-          <Button
-            color="white"
+          <TouchableOpacity
             title="Create a C-AR-D"
-            onPress={() => console.log('clicked create')}
-          />
+            onPress={() => navigation.navigate('Send')}
+          >
+            <Text style={styles.text}>Create a C-AR-D</Text>
+          </TouchableOpacity>
         </SafeAreaView>
         <SafeAreaView style={scanBtnStyle}>
-          <Button
-            color="white"
+          <TouchableOpacity
             title="Scan a C-AR-D"
-            onPress={() => console.log('clicked scan')}
-          />
+            onPress={() => navigation.navigate('Camera')}
+          >
+            <Text style={styles.text}>Scan a C-AR-D</Text>
+          </TouchableOpacity>
         </SafeAreaView>
       </View>
     </ImageBackground>
@@ -58,10 +60,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  text: {
+  title: {
     position: 'absolute',
     top: 150,
     fontSize: 40,
     fontWeight: 'bold',
+  },
+  text: {
+    color: 'white',
+    fontSize: 30,
+    textAlign: 'center',
+    fontFamily: 'Arial',
   },
 });
