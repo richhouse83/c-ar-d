@@ -18,10 +18,10 @@ export default function Homepage({ navigation, route }) {
         <Text style={styles.title}>C-AR-D</Text>
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
-            title="Create a C-AR-D"
-            onPress={() => navigation.navigate('Send')}
+            title="!"
+            onPress={() => navigation.navigate('QRcode')}
           >
-            <Text style={styles.text}>Create a C-AR-D</Text>
+            <Text style={styles.text}>Create a QRCode</Text>
           </TouchableOpacity>
         </SafeAreaView>
         <SafeAreaView style={scanBtnStyle}>
