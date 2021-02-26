@@ -59,15 +59,15 @@ export default class CameraPage extends React.Component {
             />
           </>
         ) : (
-          <SafeAreaView style={styles.previewVid}>
+          <SafeAreaView style={styles.preview}>
             <Video
-              ref={this.state.video}
-              style={styles.videoPreview}
+              style={{ width: 300, height: 500 }}
               source={{
-                uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+                uri: this.state.previewVideo,
               }}
-              resizeMode="contain"
-              isLooping
+              resizeMode="cover"
+              isLooping={true}
+              shouldPlay={true}
             />
             <View style={styles.toolbarContainer}>
               <Text style={styles.prevtext}> do you like it ?</Text>
@@ -75,10 +75,11 @@ export default class CameraPage extends React.Component {
                 style={styles.prevtext}
                 title="yes"
                 onPress={() => {
+                  this.uploadToS3(this.state.previewVideo);
                   this.setState({ preview: 'liked' });
                 }}
               >
-                <Text>HELLOWORLD</Text>
+                <Text>yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.prevtext}
@@ -86,7 +87,9 @@ export default class CameraPage extends React.Component {
                 onPress={() => {
                   this.setState({ recorded: false });
                 }}
-              />
+              >
+                <Text>no</Text>
+              </TouchableOpacity>
             </View>
           </SafeAreaView>
         )}
@@ -98,7 +101,7 @@ export default class CameraPage extends React.Component {
     console.log('attempting to upload...');
     const fileName = `${uuidv4()}.mov`;
     const file = {
-      uri: video.uri,
+      uri: this.state.previewVideo,
       name: fileName,
       type: 'video/mov',
     };
@@ -136,6 +139,7 @@ export default class CameraPage extends React.Component {
     const { recording, preview } = this.state;
 
     let video = {};
+
     if (recording === false) {
       this.setState({ recording: true });
       video = await this.camera.recordAsync({
@@ -149,9 +153,10 @@ export default class CameraPage extends React.Component {
       });
       if (preview === 'liked') {
         MediaLibrary.saveToLibraryAsync(video.uri);
-        this.uploadToS3(video);
       }
     } else {
+      this.camera.stopRecording();
+      console.log(video.uri);
       this.setState({
         recording: false,
         recorded: true,
@@ -159,7 +164,6 @@ export default class CameraPage extends React.Component {
       });
       if (preview === 'liked') {
         MediaLibrary.saveToLibraryAsync(video.uri);
-        this.uploadToS3(video);
       }
     }
   };
