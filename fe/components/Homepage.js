@@ -19,7 +19,9 @@ export default function Homepage({ navigation, route }) {
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
             title="!"
-            onPress={() => navigation.navigate('QRcode')}
+            onPress={() =>
+              navigation.navigate('QRcode', { fileName: 'testvid' })
+            }
           >
             <Text style={styles.text}>Create a QRCode</Text>
           </TouchableOpacity>
