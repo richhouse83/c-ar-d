@@ -99,10 +99,10 @@ export default class CameraPage extends React.Component {
 
   async uploadToS3(video) {
     console.log('attempting to upload...');
-    const fileName = `${uuidv4()}.mov`;
+    const fileName = uuidv4();
     const file = {
       uri: this.state.previewVideo,
-      name: fileName,
+      name: `${fileName}.mov`,
       type: 'video/mov',
     };
     const options = {
