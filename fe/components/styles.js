@@ -51,19 +51,15 @@ export default StyleSheet.create({
     alignContent: 'center',
   },
   useVideo: {
-    backgroundColor: 'red',
+    backgroundColor: '#80CEE1',
     height: '100%',
     width: '50%',
     color: 'white',
-    alignSelf: 'center',
-    alignContent: 'center',
   },
   retake: {
-    backgroundColor: 'blue',
+    backgroundColor: '#DEA5A4',
     height: '100%',
     width: '50%',
     color: 'white',
-    alignSelf: 'center',
-    alignContent: 'center',
   },
 });

@@ -83,6 +83,8 @@ export default class CameraPage extends React.Component {
                   style={{
                     color: 'white',
                     alignSelf: 'center',
+                    fontSize: 30,
+                    textAlign: 'center',
 
                     marginTop: '25%',
                   }}
@@ -100,6 +102,8 @@ export default class CameraPage extends React.Component {
               >
                 <Text
                   style={{
+                    fontSize: 30,
+                    textAlign: 'center',
                     color: 'white',
                     alignSelf: 'center',
 
