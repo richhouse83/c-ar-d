@@ -19,7 +19,7 @@ export default function Homepage({ navigation, route }) {
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
             title="!"
-            onPress={() => navigation.navigate('Camera')}
+            onPress={() => navigation.navigate('MessagePage')}
           >
             <Text style={styles.text}>Create C-AR-D</Text>
           </TouchableOpacity>

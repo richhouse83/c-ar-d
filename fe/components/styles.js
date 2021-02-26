@@ -51,13 +51,13 @@ export default StyleSheet.create({
     alignContent: 'center',
   },
   useVideo: {
-    backgroundColor: '#80CEE1',
+    backgroundColor: '#235789',
     height: '100%',
     width: '50%',
     color: 'white',
   },
   retake: {
-    backgroundColor: '#DEA5A4',
+    backgroundColor: '#C1292E',
     height: '100%',
     width: '50%',
     color: 'white',
