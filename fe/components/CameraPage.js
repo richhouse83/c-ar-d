@@ -113,6 +113,7 @@ export default class CameraPage extends React.Component {
       secretKey: AWS_SECRET_ID,
       successActionStatus: 201,
     };
+    this.props.navigation.navigate('QRcode', { fileName });
     try {
       const response = await RNS3.put(file, options);
       if (response.status === 201) {
