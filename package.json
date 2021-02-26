@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "async": "^3.2.0",
-    "googleapis": "^39.2.0"
+    "googleapis": "^39.2.0",
+    "react-native-mov-to-mp4": "^0.2.2"
   },
   "homepage": "https://github.com/richhouse83/c-ar-d#readme",
   "devDependencies": {

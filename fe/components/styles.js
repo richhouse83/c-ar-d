@@ -42,4 +42,22 @@ export default StyleSheet.create({
     backgroundColor: 'red',
     borderColor: 'transparent',
   },
+  previewVid: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  videoPreview: {
+    alignSelf: 'center',
+    height: '80%',
+    width: '100%',
+  },
+  toolbarContainer: {
+    height: '20%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  prevtext: {
+    color: 'black',
+  },
 });
