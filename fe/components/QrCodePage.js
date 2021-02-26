@@ -19,8 +19,11 @@ export default function QrCodePage({ navigation, route }) {
     >
       <View style={styles.container}>
         <Text style={styles.title}>QrCode</Text>
+        <Text>
+          https://richhouse83.github.io/c-ar-d-viewer/?video={fileName}.mp4
+        </Text>
         <QRCode
-          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}`}
+          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
           size={200}
         />
       </View>
