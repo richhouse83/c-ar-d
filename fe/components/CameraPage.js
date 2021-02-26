@@ -10,6 +10,7 @@ import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import styles from './styles';
 import CameraToolbar from './CameraToolbar';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class CameraPage extends React.Component {
   state = {
@@ -59,9 +60,9 @@ export default class CameraPage extends React.Component {
             />
           </>
         ) : (
-          <SafeAreaView style={styles.preview}>
+          <View style={styles.preview}>
             <Video
-              style={{ width: 300, height: 500 }}
+              style={{ width: '100%', height: '85%' }}
               source={{
                 uri: this.state.previewVideo,
               }}
@@ -70,28 +71,46 @@ export default class CameraPage extends React.Component {
               shouldPlay={true}
             />
             <View style={styles.toolbarContainer}>
-              <Text style={styles.prevtext}> do you like it ?</Text>
               <TouchableOpacity
-                style={styles.prevtext}
+                style={styles.useVideo}
                 title="yes"
                 onPress={() => {
                   this.uploadToS3(this.state.previewVideo);
                   this.setState({ preview: 'liked' });
                 }}
               >
-                <Text>yes</Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    alignSelf: 'center',
+
+                    marginTop: '25%',
+                  }}
+                >
+                  Use Video
+                </Text>
               </TouchableOpacity>
+
               <TouchableOpacity
-                style={styles.prevtext}
+                style={styles.retake}
                 title="no"
                 onPress={() => {
                   this.setState({ recorded: false });
                 }}
               >
-                <Text>no</Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    alignSelf: 'center',
+
+                    marginTop: '25%',
+                  }}
+                >
+                  Retake
+                </Text>
               </TouchableOpacity>
             </View>
-          </SafeAreaView>
+          </View>
         )}
       </>
     );
@@ -156,7 +175,7 @@ export default class CameraPage extends React.Component {
         MediaLibrary.saveToLibraryAsync(video.uri);
       }
     } else {
-      this.camera.stopRecording();
+      video = this.camera.stopRecording();
       console.log(video.uri);
       this.setState({
         recording: false,
