@@ -44,31 +44,37 @@ const styles = StyleSheet.create({
 
 export default function QrCodeGenerator({ navigation, route }) {
   const viewShotRef = useRef(null);
+  const [hiroUri, setHiroUri] = useState('');
 
-  const { fileName } = route.params;
+  const { fileName, toWhom, from, message } = route.params;
 
   const onImageLoad = () => {
-    viewShotRef.current.capture().then((uri) => {
-      navigation.navigate('Input', { hiroQr: uri, fileName });
+    viewShotRef.current.capture().then((imguri) => {
+      setHiroUri(imguri);
     });
   };
   return (
-    <ViewShot ref={viewShotRef} style={styles.images}>
-      <Image
-        onLoad={onImageLoad}
-        style={styles.hiro}
-        source={{
-          uri:
-            'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png',
-        }}
-      />
-      <QRCode
-        style={styles.qrcode}
-        value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
-        size={320}
-        quietZone={300}
-        backgroundColor="transparent"
-      />
-    </ViewShot>
+    <View style={{
+      height:500,
+      width:90%,
+    }}>
+      <ViewShot ref={viewShotRef} style={styles.images}>
+        <Image
+          onLoad={onImageLoad}
+          style={styles.hiro}
+          source={{
+            uri:
+              'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png',
+          }}
+        />
+        <QRCode
+          style={styles.qrcode}
+          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
+          size={320}
+          quietZone={300}
+          backgroundColor="transparent"
+        />
+      </ViewShot>
+    </View>
   );
 }

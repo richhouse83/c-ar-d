@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Next({ navigation, route }) {
-  const { hiroQr, fileName } = route.params;
+  console.log(route.params, 'props on input page');
+  const { hiroQr, fileName, toWhom, from, message } = route.params;
   console.log(hiroQr);
   return (
     <View style={styles.container}>
