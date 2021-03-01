@@ -207,9 +207,9 @@ export default class CameraPage extends React.Component {
     const { flashMode } = this.state;
     if (flashMode === Camera.Constants.FlashMode.off) {
       this.setState({
-        flashMode: Camera.Constants.FlashMode.on,
+        flashMode: Camera.Constants.FlashMode.torch,
       });
-    } else if (flashMode === Camera.Constants.FlashMode.on) {
+    } else if (flashMode === Camera.Constants.FlashMode.torch) {
       this.setState({
         flashMode: Camera.Constants.FlashMode.off,
       });
