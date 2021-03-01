@@ -31,6 +31,7 @@
     "react-native-screens": "~2.15.2",
     "react-native-svg": "^12.1.0",
     "react-native-upload-aws-s3": "^0.8.1",
+    "react-native-view-shot": "^3.1.2",
     "react-native-web": "~0.13.12",
     "uuid": "^3.4.0"
   },

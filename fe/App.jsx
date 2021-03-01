@@ -1,23 +1,14 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
-import { Permissions } from 'expo-permissions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import React, { Component } from 'react';
+import React from 'react';
 
 import CameraPage from './components/CameraPage';
 import Homepage from './components/Homepage';
-import QrCodePage from './components/QrCodePage';
-import MessagePage from './components/MessagePage';
+import QrCodeGenerator from './components/QrCodeGenerator';
+import Input from './components/Input';
 
 const Stack = createStackNavigator();
 
@@ -48,10 +39,16 @@ const App = () => (
         component={MessagePage} // Links to the custom created homepage (With Dog)
         options={{ title: 'Message page' }}
       />
+
       <Stack.Screen
         name="QRcode"
-        component={QrCodePage} // Needs to
-        options={{ title: 'QrCode Page' }}
+        component={QrCodeGenerator} // Needs to
+        options={{ title: 'QrCode' }}
+      />
+      <Stack.Screen
+        name="Input"
+        component={Input} // Needs to
+        options={{ title: 'Add details' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
