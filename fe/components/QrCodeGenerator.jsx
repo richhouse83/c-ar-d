@@ -10,15 +10,14 @@ import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
 const styles = StyleSheet.create({
   background: { flex: 1, justifyContent: 'flex-end' },
   images: {
-    width: 400,
-    height: 400,
+    height: 350,
     alignItems: 'center',
   },
   hiro: {
     position: 'absolute',
     resizeMode: 'contain',
-    height: 400,
-    width: 400,
+    height: 350,
+    width: 350,
     flex: 1,
   },
   upload: {
@@ -34,15 +33,13 @@ const styles = StyleSheet.create({
   uploadText: {
     flex: 1,
   },
-  qrcode: {
-    position: 'absolute',
-    top: 150,
-  },
+
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
+    paddingRight: 25,
+    paddingLeft: 25,
+    backgroundColor: '#EAE8FF',
+    height: '100%',
+    width: '100%',
   },
 
   title: {
@@ -124,6 +121,9 @@ export default function QrCodeGenerator({ navigation, route }) {
 
   return (
     <View style={styles.container}>
+      <Text style={{ padding: 60, fontSize: 30, textAlign: 'center' }}>
+        {toWhom}
+      </Text>
       <View style={styles.upload}>
         {!uploaded && (
           <SelfBuildingSquareSpinner
@@ -154,6 +154,12 @@ export default function QrCodeGenerator({ navigation, route }) {
             backgroundColor="transparent"
           />
         </ViewShot>
+        <Text style={{ paddingTop: 20, fontSize: 30, textAlign: 'center' }}>
+          {message}
+        </Text>
+        <Text style={{ paddingTop: 20, fontSize: 30, textAlign: 'center' }}>
+          From:{from}
+        </Text>
       </View>
     </View>
   );
