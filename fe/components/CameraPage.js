@@ -39,7 +39,6 @@ export default class CameraPage extends React.Component {
     if (hasCameraPermission === null) {
       return <Text>Access to camera has been denied.</Text>;
     }
-    console.log(this.props.route.params);
 
     return (
       <>
@@ -54,6 +53,7 @@ export default class CameraPage extends React.Component {
               />
             </View>
             <CameraToolbar
+              scan={this.props.route.params}
               {...this.state}
               handleFlashMode={this.handleFlashMode}
               handleRecording={this.handleRecording}
@@ -68,7 +68,7 @@ export default class CameraPage extends React.Component {
                 uri: this.state.previewVideo,
               }}
               resizeMode="cover"
-              isLooping={true}
+              isLooping={false}
               shouldPlay={true}
             />
             <View style={styles.toolbarContainer}>
@@ -76,7 +76,7 @@ export default class CameraPage extends React.Component {
                 style={styles.useVideo}
                 title="yes"
                 onPress={() => {
-                  this.uploadToS3(this.state.previewVideo);
+                  /*     this.uploadToS3(this.state.previewVideo); */
                   this.setState({ preview: 'liked' });
                 }}
               >
@@ -211,9 +211,9 @@ export default class CameraPage extends React.Component {
     const { flashMode } = this.state;
     if (flashMode === Camera.Constants.FlashMode.off) {
       this.setState({
-        flashMode: Camera.Constants.FlashMode.on,
+        flashMode: Camera.Constants.FlashMode.torch,
       });
-    } else if (flashMode === Camera.Constants.FlashMode.on) {
+    } else if (flashMode === Camera.Constants.FlashMode.torch) {
       this.setState({
         flashMode: Camera.Constants.FlashMode.off,
       });

@@ -19,6 +19,8 @@ export default class CameraToolbar extends Component {
   state = {};
 
   render() {
+    console.log(this.props.scan);
+
     return (
       <SafeAreaView>
         <Grid style={styles.bottomToolbar}>
@@ -37,18 +39,20 @@ export default class CameraToolbar extends Component {
               </TouchableOpacity>
             </Col>
             <Col size={2} style={styles.alignCenter}>
-              <TouchableWithoutFeedback onPress={this.props.handleRecording}>
-                <View
-                  style={[
-                    styles.captureBtn,
-                    this.props.recording && styles.captureBtnActive,
-                  ]}
-                >
-                  {this.props.recording && (
-                    <View style={styles.captureBtnInternal} />
-                  )}
-                </View>
-              </TouchableWithoutFeedback>
+              {this.props.scan && (
+                <TouchableWithoutFeedback onPress={this.props.handleRecording}>
+                  <View
+                    style={[
+                      styles.captureBtn,
+                      this.props.recording && styles.captureBtnActive,
+                    ]}
+                  >
+                    {this.props.recording && (
+                      <View style={styles.captureBtnInternal} />
+                    )}
+                  </View>
+                </TouchableWithoutFeedback>
+              )}
             </Col>
             <Col style={styles.alignCenter}>
               <TouchableOpacity onPress={this.props.handleType}>
