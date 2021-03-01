@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 
 export default function QrCodePage({ navigation, route }) {
-  const { fileName } = route.params;
+  const { fileName, toWhom, from, message } = route.params;
+  console.log(route.params);
   return (
     <ImageBackground
       style={styles.background}

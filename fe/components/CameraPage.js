@@ -39,6 +39,7 @@ export default class CameraPage extends React.Component {
     if (hasCameraPermission === null) {
       return <Text>Access to camera has been denied.</Text>;
     }
+    console.log(this.props.route.params);
 
     return (
       <>
@@ -136,7 +137,10 @@ export default class CameraPage extends React.Component {
       secretKey: AWS_SECRET_ID,
       successActionStatus: 201,
     };
-    this.props.navigation.navigate('QRcode', { fileName });
+    this.props.navigation.navigate('QRcode', {
+      ...this.props.route.params,
+      fileName,
+    });
     try {
       const response = await RNS3.put(file, options);
       if (response.status === 201) {
