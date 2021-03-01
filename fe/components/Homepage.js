@@ -21,7 +21,7 @@ export default function Homepage({ navigation, route }) {
             title="!"
             onPress={() => navigation.navigate('MessagePage')}
           >
-            <Text style={styles.text}>Create C-AR-D</Text>
+            <Text style={styles.text}>Create a C-AR-D ✏️</Text>
           </TouchableOpacity>
         </SafeAreaView>
         <SafeAreaView style={scanBtnStyle}>
@@ -29,7 +29,7 @@ export default function Homepage({ navigation, route }) {
             title="Scan a C-AR-D"
             onPress={() => navigation.navigate('Camera')}
           >
-            <Text style={styles.text}>Scan a C-AR-D</Text>
+            <Text style={styles.text}>Scan a C-AR-D 📷</Text>
           </TouchableOpacity>
         </SafeAreaView>
       </View>

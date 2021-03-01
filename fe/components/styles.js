@@ -50,14 +50,14 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
   },
-  useVideo: {
-    backgroundColor: '#235789',
+  retake: {
+    backgroundColor: '#C1292E',
     height: '100%',
     width: '50%',
     color: 'white',
   },
-  retake: {
-    backgroundColor: '#C1292E',
+  useVideo: {
+    backgroundColor: '#80CEE1',
     height: '100%',
     width: '50%',
     color: 'white',

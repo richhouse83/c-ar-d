@@ -17,14 +17,14 @@ export default class MessagePage extends Component {
   render() {
     console.log(this.state.from);
     return (
-      <View style={{ padding: 40, height: '100%', backgroundColor: '#ADACB5' }}>
+      <View style={{ padding: 40, height: '100%', backgroundColor: '#f0ebef' }}>
         <TextInput
           style={{
             textAlign: 'center',
             fontSize: 30,
             marginTop: 30,
             height: 70,
-            backgroundColor: '#EAE8FF',
+            backgroundColor: '#d2eff1',
             borderStyle: 'solid',
             borderRadius: 10,
             borderWidth: 2,
@@ -42,7 +42,7 @@ export default class MessagePage extends Component {
             fontSize: 30,
             height: 300,
             marginTop: 30,
-            backgroundColor: '#EAE8FF',
+            backgroundColor: '#feffff',
             borderStyle: 'solid',
             borderRadius: 10,
             borderWidth: 2,
@@ -64,7 +64,7 @@ export default class MessagePage extends Component {
             borderRadius: 10,
             borderWidth: 2,
           }}
-          placeholder="From ..."
+          placeholder="From..."
           onChangeText={(event) => {
             this.setState({ from: event });
           }}
@@ -77,7 +77,7 @@ export default class MessagePage extends Component {
               this.props.navigation.navigate('Camera', { ...this.state })
             }
           >
-            <Text style={styles.text}>Record AR Video</Text>
+            <Text style={styles.text}>Record Video Message </Text>
           </TouchableOpacity>
         </SafeAreaView>
       </View>
