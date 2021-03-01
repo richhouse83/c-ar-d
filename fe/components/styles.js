@@ -42,22 +42,24 @@ export default StyleSheet.create({
     backgroundColor: 'red',
     borderColor: 'transparent',
   },
-  previewVid: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  videoPreview: {
-    alignSelf: 'center',
-    height: '80%',
-    width: '100%',
-  },
+
   toolbarContainer: {
-    height: '20%',
+    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    alignContent: 'center',
   },
-  prevtext: {
-    color: 'black',
+  useVideo: {
+    backgroundColor: '#235789',
+    height: '100%',
+    width: '50%',
+    color: 'white',
+  },
+  retake: {
+    backgroundColor: '#C1292E',
+    height: '100%',
+    width: '50%',
+    color: 'white',
   },
 });

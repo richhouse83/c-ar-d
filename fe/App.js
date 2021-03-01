@@ -17,37 +17,45 @@ import React, { Component } from 'react';
 import CameraPage from './components/CameraPage';
 import Homepage from './components/Homepage';
 import QrCodePage from './components/QrCodePage';
+import MessagePage from './components/MessagePage';
 
 const Stack = createStackNavigator();
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Homepage} // Links to the custom created homepage (With Dog)
-          options={{ title: 'Homepage' }}
-        />
-        <Stack.Screen
-          name="Camera"
-          component={CameraPage} // Needs to link to the camera app the backend team made
-          options={{ title: 'Camera Page' }}
-        />
-        {/* <Stack.Screen
+const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Home"
+        component={Homepage} // Links to the custom created homepage (With Dog)
+        options={{ title: 'Homepage' }}
+      />
+      <Stack.Screen
+        name="Camera"
+        component={CameraPage} // Needs to link to the camera app the backend team made
+        options={{ title: 'Camera Page' }}
+      />
+      {/* <Stack.Screen
           name="Send"
           component={Send} // Needs to
           options={{ title: 'Send Page' }}
         /> */}
-        <Stack.Screen
-          name="QRcode"
-          component={QrCodePage} // Needs to
-          options={{ title: 'QrCode Page' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-};
+      <Stack.Screen
+        name="MessagePage"
+        component={MessagePage} // Links to the custom created homepage (With Dog)
+        options={{ title: 'Message page' }}
+      />
+      <Stack.Screen
+        name="QRcode"
+        component={QrCodePage} // Needs to
+        options={{ title: 'QrCode Page' }}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
 // const Home = ({ navigation }) => {
 //   return (
