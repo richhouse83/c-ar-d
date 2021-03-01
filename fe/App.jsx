@@ -9,6 +9,7 @@ import CameraPage from './components/CameraPage';
 import Homepage from './components/Homepage';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import Input from './components/Input';
+import MessagePage from './components/MessagePage';
 
 const Stack = createStackNavigator();
 
@@ -29,11 +30,7 @@ const App = () => (
         component={CameraPage} // Needs to link to the camera app the backend team made
         options={{ title: 'Camera Page' }}
       />
-      {/* <Stack.Screen
-          name="Send"
-          component={Send} // Needs to
-          options={{ title: 'Send Page' }}
-        /> */}
+
       <Stack.Screen
         name="MessagePage"
         component={MessagePage} // Links to the custom created homepage (With Dog)
@@ -53,61 +50,5 @@ const App = () => (
     </Stack.Navigator>
   </NavigationContainer>
 );
-
-// const Home = ({ navigation }) => {
-//   return (
-//     <View>
-//       <TouchableOpacity
-//         style={styling.button}
-//         title="QR"
-//         onPress={() => navigation.navigate('QRcode')}
-//       >
-//         <Text>Test button</Text>
-//       </TouchableOpacity>
-//       <TouchableOpacity
-//         style={styling.button}
-//         title="scan a C-AR-D"
-//         onPress={() => navigation.navigate('Camera')}
-//       >
-//         <Text>Test button</Text>
-//       </TouchableOpacity>
-//       {/* <TouchableOpacity
-//         style={styling.button}
-//         title="send a QRCode"
-//         onPress={() => navigation.navigate('QRcode')}
-//       >
-//         <Text>Test button</Text>
-//       </TouchableOpacity> */}
-//     </View>
-//   );
-// };
-
-// const Camera = ({ navigation }) => {
-//   return (
-//     <TouchableOpacity
-//       style={styling.button}
-//       title="placeholder"
-//       onPress={() => navigation.navigate()}
-//     >
-//       <Text>Test button</Text>
-//     </TouchableOpacity>
-//   );
-// };
-
-// const Send = ({ navigation }) => {
-//   return (
-//     <Text>Text</Text>
-//     // <TouchableOpacity title="send a C-AR-D" onPress={() => navigation.navigate('Send')} />
-//   );
-// };
-
-const styling = StyleSheet.create({
-  button: {
-    backgroundColor: '#80CEE1',
-    width: 300,
-    top: 300,
-    borderRadius: 50,
-  },
-});
 
 export default App;
