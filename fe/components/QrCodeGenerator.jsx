@@ -1,5 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Linking, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Linking,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import ViewShot from 'react-native-view-shot';
 import { RNS3 } from 'react-native-upload-aws-s3';
@@ -16,16 +24,18 @@ const styles = StyleSheet.create({
   hiro: {
     position: 'absolute',
     resizeMode: 'contain',
+    top: 20,
     height: 350,
     width: 350,
     flex: 1,
   },
   upload: {
+    marginTop: 50,
     width: 300,
     alignItems: 'center',
     backgroundColor: '#e9e998',
     marginBottom: 30,
-    height: 100,
+    height: 20,
   },
   loader: {
     flex: 1,
@@ -53,6 +63,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     fontFamily: 'Arial',
+  },
+  toolbarContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
   },
 });
 
@@ -93,16 +110,6 @@ export default function QrCodeGenerator({ navigation, route }) {
       if (response.status === 201) {
         console.log('Success: ', response.body);
         setUploaded(true);
-        /**
-         * {
-         *   postResponse: {
-         *     bucket: "your-bucket",
-         *     etag : "9f620878e06d28774406017480a59fd4",
-         *     key: "uploads/image.png",
-         *     location: "https://your-bucket.s3.amazonaws.com/uploads%2Fimage.png"
-         *   }
-         * }
-         */
       } else {
         console.log('Failed to upload image to S3: ', response);
         setErrorMsg('Upload failed, please try again');
@@ -121,9 +128,6 @@ export default function QrCodeGenerator({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={{ padding: 60, fontSize: 30, textAlign: 'center' }}>
-        {toWhom}
-      </Text>
       <View style={styles.upload}>
         {!uploaded && (
           <SelfBuildingSquareSpinner
@@ -132,8 +136,18 @@ export default function QrCodeGenerator({ navigation, route }) {
             size={10}
           />
         )}
+
         <Text style={styles.uploadText}>
           {uploaded ? 'Upload Successful!' : 'Uploading video....'}
+        </Text>
+        <Text
+          style={{
+            padding: 60,
+            fontSize: 30,
+            textAlign: 'center',
+          }}
+        >
+          {toWhom}
         </Text>
       </View>
       <View>
@@ -160,6 +174,49 @@ export default function QrCodeGenerator({ navigation, route }) {
         <Text style={{ paddingTop: 20, fontSize: 30, textAlign: 'center' }}>
           From:{from}
         </Text>
+        <View>
+          <TouchableOpacity
+            style={styles.useVideo}
+            title="yes"
+            onPress={() => {
+              navigation.navigate('SendButton');
+            }}
+          >
+            <Text
+              style={{
+                color: 'black',
+                alignSelf: 'center',
+                fontSize: 15,
+                textAlign: 'center',
+
+                marginTop: '25%',
+              }}
+            >
+              send
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.retake}
+            title="no"
+            onPress={() => {
+              this.setState({ recorded: false });
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 15,
+                textAlign: 'center',
+                color: 'black',
+                alignSelf: 'center',
+
+                marginTop: '25%',
+              }}
+            >
+              Reset everything
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

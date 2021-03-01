@@ -10,6 +10,7 @@ import Homepage from './components/Homepage';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import Input from './components/Input';
 import MessagePage from './components/MessagePage';
+import SendButton from './components/SendButton';
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,11 @@ const App = () => (
         name="Input"
         component={Input} // Needs to
         options={{ title: 'Add details' }}
+      />
+      <Stack.Screen
+        name="SendButton"
+        component={SendButton} // Links to the custom created homepage (With Dog)
+        options={{ title: 'SendButton' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
