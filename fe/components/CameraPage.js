@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  Linking,
+} from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Video, AVPlaybackStatus } from 'expo-av';
 
@@ -37,6 +43,7 @@ export default class CameraPage extends React.Component {
       return <Text>Access to camera has been denied.</Text>;
     }
 
+    const isRecordingMode = this.props.route.params;
     return (
       <>
         {!this.state.recorded ? (
@@ -47,10 +54,21 @@ export default class CameraPage extends React.Component {
                 flashMode={this.state.flashMode}
                 type={this.state.cameraType}
                 ref={(ref) => (this.camera = ref)}
+                onBarCodeScanned={async (data) => {
+                  if (
+                    data.data.startsWith(
+                      'https://richhouse83.github.io/c-ar-d-viewer/',
+                    ) &&
+                    !isRecordingMode
+                  ) {
+                    console.log(isRecordingMode);
+                    await Linking.openURL(data.data);
+                  }
+                }}
               />
             </View>
             <CameraToolbar
-              scan={this.props.route.params}
+              scan={isRecordingMode}
               {...this.state}
               handleFlashMode={this.handleFlashMode}
               handleRecording={this.handleRecording}
