@@ -37,6 +37,7 @@ export default class CameraPage extends React.Component {
   }
 
   render() {
+    console.log(this.state.previewVideo);
     const { hasCameraPermission } = this.state;
 
     if (hasCameraPermission === null) {

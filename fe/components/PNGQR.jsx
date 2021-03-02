@@ -1,5 +1,14 @@
-import React from 'react';
-import { StyleSheet, View, Button, Linking, Image, Text } from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Button,
+  Linking,
+  Image,
+  Text,
+  TextInput,
+} from 'react-native';
+import SendButton from './SendButton';
 
 const styles = StyleSheet.create({
   background: { flex: 1, justifyContent: 'flex-end' },
@@ -35,9 +44,10 @@ const styles = StyleSheet.create({
 });
 
 export default function Next({ navigation, route }) {
+  const [sendEmail, setSendEmail] = useState('');
   console.log(route.params, 'props on input page');
-  const { hiroQr, fileName, toWhom, from, message } = route.params;
-  console.log(hiroQr);
+  const { hiroUri, fileName, toWhom, from, message } = route.params;
+
   return (
     <View style={styles.container}>
       <Button
@@ -53,15 +63,13 @@ export default function Next({ navigation, route }) {
           });
         }}
       />
-      <View style={styles.images}>
-        <Image
-          style={styles.hiro}
-          source={{
-            uri: hiroQr,
-          }}
-        />
-        <Text>QRcode should be here</Text>
-      </View>
+      <TextInput
+        placeholder="recipient email"
+        onChangeText={(text) => {
+          setSendEmail(text);
+        }}
+      />
+      <SendButton email={sendEmail} {...route.params} />
     </View>
   );
 }

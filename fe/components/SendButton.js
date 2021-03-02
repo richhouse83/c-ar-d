@@ -1,30 +1,33 @@
 import React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
-import email from 'react-native-email';
+import * as MailComposer from 'expo-mail-composer';
+import Input from './PNGQR';
 
-export default class SendScreen extends React.Component {
+export default class SendButton extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Button title="Send Mail" onPress={this.handleEmail} />
       </View>
     );
   }
 
   handleEmail = () => {
-    const { toWhom, message, from } = this.props;
-    email(toWhom, {
-      subject: 'view your AR message',
-      body: 'make sure it works',
-    }).catch(console.error);
+    const { hiroUri, email, toWhom, message, from } = this.props;
+    console.log(this.props);
+
+    MailComposer.composeAsync({
+      subject: 'Your AR Birthday cARd',
+      recipients: [email],
+      body: `<div style="text-align: center;"><b>dear ${toWhom}</b>
+      <b> ${from}has sent you the following message</b>
+      <p>${message}</p>
+      <p>to view your message, scan the qr code and follow the instructions</p>
+      </div>
+      
+      `,
+      isHtml: true,
+      attachments: ['file://' + hiroUri],
+    });
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
