@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
 import * as MailComposer from 'expo-mail-composer';
-import Input from './PNGQR';
 
 export default class SendButton extends React.Component {
   render() {
