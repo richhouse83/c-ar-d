@@ -182,7 +182,7 @@ export default function QrCodeGenerator({ navigation, route }) {
             style={styles.useVideo}
             title="yes"
             onPress={() => {
-              navigation.navigate('SendButton');
+              navigation.navigate('PNGQR', { toWhom, from, message, hiroUri });
             }}
           >
             <Text

@@ -8,9 +8,10 @@ import React from 'react';
 import CameraPage from './components/CameraPage';
 import Homepage from './components/Homepage';
 import QrCodeGenerator from './components/QrCodeGenerator';
-import Input from './components/Input';
+
 import MessagePage from './components/MessagePage';
 import SendButton from './components/SendButton';
+import PNGQR from './components/PNGQR';
 
 const Stack = createStackNavigator();
 
@@ -43,15 +44,11 @@ const App = () => (
         component={QrCodeGenerator} // Needs to
         options={{ title: 'QrCode' }}
       />
+
       <Stack.Screen
-        name="Input"
-        component={Input} // Needs to
-        options={{ title: 'Add details' }}
-      />
-      <Stack.Screen
-        name="SendButton"
-        component={SendButton} // Links to the custom created homepage (With Dog)
-        options={{ title: 'SendButton' }}
+        name="PNGQR"
+        component={PNGQR} // Links to the custom created homepage (With Dog)
+        options={{ title: 'PNGQR' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
