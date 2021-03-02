@@ -13,17 +13,17 @@ export default class SendButton extends React.Component {
   }
 
   handleEmail = () => {
-    const { hiroUri, email, toWhom, message, from } = this.props;
+    const { hiroUri, email, toWhom, message, from, browserLink } = this.props;
     console.log(this.props);
 
     MailComposer.composeAsync({
       subject: 'Your AR Birthday cARd',
       recipients: [email],
       body: `<div style="text-align: center;"><b>dear ${toWhom}</b>
-      <b> ${from}has sent you the following message</b>
+      <b> ${from} has sent you the following message</b>
       <p>${message}</p>
-      <p>to view your message, scan the qr code and follow the instructions</p>
-      </div>
+      <p>to view your message, scan the qr code and follow the instructions, or <a href=${browserLink}>click here</a>.</p>
+      </div> 
       
       `,
       isHtml: true,
