@@ -17,17 +17,17 @@ export default class MessagePage extends Component {
   render() {
     console.log(this.state.from);
     return (
-      <View style={{ padding: 40, height: '100%', backgroundColor: '#f0ebef' }}>
+      <View
+        style={{ padding: '10%', height: '100%', backgroundColor: '#f0ebef' }}
+      >
         <TextInput
           style={{
             textAlign: 'center',
             fontSize: 30,
-            marginTop: 30,
-            height: 70,
+            marginTop: '5%',
+            height: '8%',
             backgroundColor: '#d2eff1',
-            borderStyle: 'solid',
             borderRadius: 10,
-            borderWidth: 2,
           }}
           placeholder="Dear..."
           onChangeText={(event) => {
@@ -40,12 +40,10 @@ export default class MessagePage extends Component {
             textAlign: 'center',
             wordWrap: 'normal',
             fontSize: 30,
-            height: 300,
-            marginTop: 30,
+            height: '40%',
+            marginTop: '20%',
             backgroundColor: '#feffff',
-            borderStyle: 'solid',
             borderRadius: 10,
-            borderWidth: 2,
           }}
           placeholder="Your message"
           onChangeText={(event) => {
@@ -56,13 +54,11 @@ export default class MessagePage extends Component {
         <TextInput
           style={{
             textAlign: 'center',
-            height: 70,
-            marginTop: 30,
+            height: '8%',
+            marginTop: '20%',
             fontSize: 30,
             backgroundColor: '#EAE8FF',
-            borderStyle: 'solid',
             borderRadius: 10,
-            borderWidth: 2,
           }}
           placeholder="From..."
           onChangeText={(event) => {
@@ -86,12 +82,12 @@ export default class MessagePage extends Component {
 }
 const createBtnStyle = {
   backgroundColor: '#80CEE1',
-  height: 120,
-  width: 300,
-  borderRadius: 50,
+  height: '15%',
+  width: '100%',
+  borderRadius: 10,
   alignItems: 'center',
   justifyContent: 'center',
-  marginTop: 50,
+  marginTop: '20%',
 };
 
 const styles = StyleSheet.create({
