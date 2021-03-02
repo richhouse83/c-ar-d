@@ -203,7 +203,7 @@ export default function QrCodeGenerator({ navigation, route }) {
             style={styles.retake}
             title="no"
             onPress={() => {
-              this.setState({ recorded: false });
+              navigation.navigate('MessagePage');
             }}
           >
             <Text
