@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {
   TextInput,
-  View,
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
   Text,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class MessagePage extends Component {
   state = {
@@ -15,10 +15,15 @@ export default class MessagePage extends Component {
     from: '',
   };
   render() {
-    console.log(this.state.from);
+    const { toWhom, message, from } = this.state;
     return (
-      <View
-        style={{ padding: '10%', height: '100%', backgroundColor: '#f0ebef' }}
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          padding: '10%',
+          height: '100%',
+          backgroundColor: '#f0ebef',
+        }}
+        behavior="height"
       >
         <TextInput
           style={{
@@ -33,7 +38,7 @@ export default class MessagePage extends Component {
           onChangeText={(event) => {
             this.setState({ toWhom: event });
           }}
-          defaultValue={this.state.toWhom}
+          defaultValue={toWhom}
         />
         <TextInput
           style={{
@@ -49,7 +54,7 @@ export default class MessagePage extends Component {
           onChangeText={(event) => {
             this.setState({ message: event });
           }}
-          defaultValue={this.state.message}
+          defaultValue={message}
         />
         <TextInput
           style={{
@@ -64,19 +69,24 @@ export default class MessagePage extends Component {
           onChangeText={(event) => {
             this.setState({ from: event });
           }}
-          defaultValue={this.state.from}
+          defaultValue={from}
         />
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
+            disabled={!toWhom || !message || !from}
             title=""
             onPress={() =>
               this.props.navigation.navigate('Camera', { ...this.state })
             }
           >
-            <Text style={styles.text}>Record Video Message </Text>
+            <Text style={styles.text}>
+              {!toWhom || !message || !from
+                ? 'Fill in all fields'
+                : 'Record Video Message'}
+            </Text>
           </TouchableOpacity>
         </SafeAreaView>
-      </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
