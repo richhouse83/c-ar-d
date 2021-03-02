@@ -14,6 +14,7 @@ import * as MediaLibrary from 'expo-media-library';
 import styles from './styles';
 import CameraToolbar from './CameraToolbar';
 import { Col, Row, Grid } from 'react-native-easy-grid';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default class CameraPage extends React.Component {
   state = {
@@ -27,6 +28,9 @@ export default class CameraPage extends React.Component {
     preview: '',
   };
   async componentDidMount() {
+    /*     await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE,
+    ); */
     const { status, permissions } = await Permissions.askAsync(
       Permissions.CAMERA,
     );
@@ -192,15 +196,16 @@ export default class CameraPage extends React.Component {
       video = await this.camera.recordAsync({
         maxDuration: 5,
       });
-      console.log(video.uri);
       this.setState({
         recording: false,
         recorded: true,
         previewVideo: video.uri,
       });
-    } else {
-      video = this.camera.stopRecording();
+
       console.log(video.uri);
+    } else if (recording === true) {
+      video = this.camera.stopRecording();
+
       this.setState({
         recording: false,
         recorded: true,
