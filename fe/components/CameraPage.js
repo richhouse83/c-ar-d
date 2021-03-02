@@ -65,7 +65,7 @@ export default class CameraPage extends React.Component {
                 uri: this.state.previewVideo,
               }}
               resizeMode="cover"
-              isLooping={false}
+              isLooping={this.state.preview === 'liked' ? false : true}
               shouldPlay={true}
             />
             <View style={styles.toolbarContainer}>
@@ -179,9 +179,6 @@ export default class CameraPage extends React.Component {
         recorded: true,
         previewVideo: video.uri,
       });
-      if (preview === 'liked') {
-        MediaLibrary.saveToLibraryAsync(video.uri);
-      }
     } else {
       video = this.camera.stopRecording();
       console.log(video.uri);
@@ -190,9 +187,6 @@ export default class CameraPage extends React.Component {
         recorded: true,
         previewVideo: video.uri,
       });
-      if (preview === 'liked') {
-        MediaLibrary.saveToLibraryAsync(video.uri);
-      }
     }
   };
   handleType = () => {
