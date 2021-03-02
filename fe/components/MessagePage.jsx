@@ -17,13 +17,13 @@ export default class MessagePage extends Component {
   render() {
     console.log(this.state.from);
     return (
-      <View style={{ padding: 40, height: '100%', backgroundColor: '#ADACB5' }}>
+      <View style={{ padding: '10%', height: '100%', backgroundColor: '#ADACB5' }}>
         <TextInput
           style={{
             textAlign: 'center',
             fontSize: 30,
-            marginTop: 30,
-            height: 70,
+            marginTop: '5%',
+            height: '8%',
             backgroundColor: '#EAE8FF',
             borderStyle: 'solid',
             borderRadius: 10,
@@ -40,8 +40,8 @@ export default class MessagePage extends Component {
             textAlign: 'center',
             wordWrap: 'normal',
             fontSize: 30,
-            height: 300,
-            marginTop: 30,
+            height: '40%',
+            marginTop: '20%',
             backgroundColor: '#EAE8FF',
             borderStyle: 'solid',
             borderRadius: 10,
@@ -56,8 +56,8 @@ export default class MessagePage extends Component {
         <TextInput
           style={{
             textAlign: 'center',
-            height: 70,
-            marginTop: 30,
+            height: '8%',
+            marginTop: '20%',
             fontSize: 30,
             backgroundColor: '#EAE8FF',
             borderStyle: 'solid',
@@ -86,12 +86,12 @@ export default class MessagePage extends Component {
 }
 const createBtnStyle = {
   backgroundColor: '#80CEE1',
-  height: 120,
-  width: 300,
+  height: '15%',
+  width: '100%',
   borderRadius: 50,
   alignItems: 'center',
   justifyContent: 'center',
-  marginTop: 50,
+  marginTop: '20%',
 };
 
 const styles = StyleSheet.create({

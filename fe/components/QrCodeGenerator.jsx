@@ -18,24 +18,24 @@ import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
 const styles = StyleSheet.create({
   background: { flex: 1, justifyContent: 'flex-end' },
   images: {
-    height: 350,
+    height: '46%',
     alignItems: 'center',
   },
   hiro: {
     position: 'absolute',
-    resizeMode: 'contain',
-    top: 20,
-    height: 350,
-    width: 350,
+    // resizeMode: 'contain',
+    top: '12%',
+    height: '100%',
+    width: '100%',
     flex: 1,
   },
   upload: {
-    marginTop: 50,
-    width: 300,
+    marginTop: '15%',
+    width: '100%',
     alignItems: 'center',
     backgroundColor: '#e9e998',
-    marginBottom: 30,
-    height: 20,
+    marginBottom: '8%',
+    height: '2%',
   },
   loader: {
     flex: 1,
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    paddingRight: 25,
-    paddingLeft: 25,
+    paddingRight: '2%',
+    paddingLeft: '2%',
     backgroundColor: '#EAE8FF',
     height: '100%',
     width: '100%',
@@ -79,7 +79,9 @@ export default function QrCodeGenerator({ navigation, route }) {
   const [uploaded, setUploaded] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const { toWhom, from, message, videoUri } = route.params;
+  const {
+    toWhom, from, message, videoUri,
+  } = route.params;
 
   const fileName = uuidv4();
 
@@ -166,16 +168,17 @@ export default function QrCodeGenerator({ navigation, route }) {
           <QRCode
             style={styles.qrcode}
             value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
-            size={320}
+            size={335}
             quietZone={300}
             backgroundColor="transparent"
           />
         </ViewShot>
-        <Text style={{ paddingTop: 20, fontSize: 30, textAlign: 'center' }}>
+        <Text style={{ paddingTop: '5%', fontSize: 30, textAlign: 'center' }}>
           {message}
         </Text>
-        <Text style={{ paddingTop: 20, fontSize: 30, textAlign: 'center' }}>
-          From:{from}
+        <Text style={{ paddingTop: '5%', fontSize: 30, textAlign: 'center' }}>
+          From:
+          {from}
         </Text>
         <View>
           <TouchableOpacity
