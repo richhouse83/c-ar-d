@@ -47,6 +47,7 @@ export default function Next({ navigation, route }) {
   const [sendEmail, setSendEmail] = useState('');
   console.log(route.params, 'props on input page');
   const { hiroUri, fileName, toWhom, from, message } = route.params;
+  const browserLink = `https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`;
 
   return (
     <View style={styles.container}>
@@ -69,7 +70,11 @@ export default function Next({ navigation, route }) {
           setSendEmail(text);
         }}
       />
-      <SendButton email={sendEmail} {...route.params} />
+      <SendButton
+        email={sendEmail}
+        browserLink={browserLink}
+        {...route.params}
+      />
     </View>
   );
 }
