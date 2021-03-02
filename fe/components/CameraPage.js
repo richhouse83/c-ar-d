@@ -70,6 +70,27 @@ export default class CameraPage extends React.Component {
             />
             <View style={styles.toolbarContainer}>
               <TouchableOpacity
+                style={styles.retake}
+                title="no"
+                onPress={() => {
+                  this.setState({ recorded: false });
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 30,
+                    textAlign: 'center',
+                    color: 'white',
+                    alignSelf: 'center',
+
+                    marginTop: '25%',
+                  }}
+                >
+                  Retake
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
                 style={styles.useVideo}
                 title="yes"
                 onPress={() => {
@@ -91,27 +112,6 @@ export default class CameraPage extends React.Component {
                   }}
                 >
                   Use Video
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.retake}
-                title="no"
-                onPress={() => {
-                  this.setState({ recorded: false });
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 30,
-                    textAlign: 'center',
-                    color: 'white',
-                    alignSelf: 'center',
-
-                    marginTop: '25%',
-                  }}
-                >
-                  Retake
                 </Text>
               </TouchableOpacity>
             </View>

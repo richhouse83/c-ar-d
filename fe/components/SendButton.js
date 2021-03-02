@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Button, View } from 'react-native';
 import email from 'react-native-email';
 
-export default class SendScreen extends React.Component {
+export default class SendButton extends React.Component {
   render() {
     return (
       <View style={styles.container}>
