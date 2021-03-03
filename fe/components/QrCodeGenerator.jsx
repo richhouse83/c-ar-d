@@ -183,6 +183,7 @@ export default function QrCodeGenerator({ navigation, route }) {
       <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.edit}
+          disabled={uploaded ? true : false}
           title="no"
           onPress={() => {
             navigation.navigate('MessagePage');
