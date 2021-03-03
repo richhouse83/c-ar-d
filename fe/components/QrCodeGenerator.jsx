@@ -3,8 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
-  Linking,
+  ScrollView,
   Image,
   TouchableOpacity,
 } from 'react-native';
@@ -16,60 +15,67 @@ import { SelfBuildingSquareSpinner } from 'react-native-epic-spinners';
 import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
 
 const styles = StyleSheet.create({
-  background: { flex: 1, justifyContent: 'flex-end' },
   images: {
-    height: '46%',
+    width: '90%',
     alignItems: 'center',
   },
   hiro: {
     position: 'absolute',
-    // resizeMode: 'contain',
-    top: '12%',
+    resizeMode: 'contain',
     height: '100%',
     width: '100%',
     flex: 1,
   },
   upload: {
     marginTop: '15%',
-    width: '100%',
+    width: '90%',
+    height: '10%',
     alignItems: 'center',
+    justifyContent: 'space-around',
     backgroundColor: '#e9e998',
-    marginBottom: '8%',
-    height: '2%',
+    marginBottom: '1%',
+    borderRadius: 10,
   },
-  loader: {
-    flex: 1,
+  messages: {
+    width: '90%',
+    backgroundColor: '#feffff',
+    borderRadius: 10,
+    alignItems: 'center',
   },
-  uploadText: {
-    flex: 1,
+  text: {
+    fontSize: 30,
   },
-
   container: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingRight: '2%',
     paddingLeft: '2%',
-    backgroundColor: '#EAE8FF',
+    backgroundColor: '#f0ebef',
     height: '100%',
     width: '100%',
   },
 
-  title: {
-    position: 'absolute',
-    top: 150,
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
-  text: {
-    color: 'white',
-    fontSize: 30,
-    textAlign: 'center',
-    fontFamily: 'Arial',
-  },
-  toolbarContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+  confirm: {
+    backgroundColor: '#80CEE1',
+    height: '100%',
+    width: '45%',
+    borderRadius: 10,
     alignItems: 'center',
-    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  edit: {
+    backgroundColor: '#C1292E',
+    height: '100%',
+    width: '45%',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttons: {
+    height: '10%',
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
@@ -130,7 +136,7 @@ export default function QrCodeGenerator({ navigation, route }) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.upload}>
         {!uploaded && (
           <SelfBuildingSquareSpinner
@@ -139,88 +145,59 @@ export default function QrCodeGenerator({ navigation, route }) {
             size={10}
           />
         )}
-
         <Text style={styles.uploadText}>
           {uploaded ? 'Upload Successful!' : 'Uploading video....'}
+          {errorMsg}
         </Text>
-        <Text
-          style={{
-            padding: 60,
-            fontSize: 30,
-            textAlign: 'center',
+      </View>
+      <View style={styles.messages}>
+        <Text style={styles.text}>Your message reads</Text>
+        <Text style={styles.text}>{toWhom}</Text>
+        <Text style={styles.text}>{message}</Text>
+        <Text style={styles.text}>{from}</Text>
+      </View>
+      <View style={styles.buttons}>
+        <TouchableOpacity
+          style={styles.edit}
+          title="no"
+          onPress={() => {
+            navigation.navigate('MessagePage');
           }}
         >
-          {toWhom}
-        </Text>
+          <Text>Edit</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.confirm}
+          title="yes"
+          onPress={() => {
+            navigation.navigate('PNGQR', {
+              toWhom,
+              from,
+              message,
+              hiroUri,
+            });
+          }}
+        >
+          <Text>send</Text>
+        </TouchableOpacity>
       </View>
-      <View>
-        <ViewShot ref={viewShotRef} style={styles.images}>
-          <Image
-            onLoad={onImageLoad}
-            style={styles.hiro}
-            source={{
-              uri:
-                'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png',
-            }}
-          />
-          <QRCode
-            style={styles.qrcode}
-            value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
-            size={335}
-            quietZone={300}
-            backgroundColor="transparent"
-          />
-        </ViewShot>
-        <Text style={{ paddingTop: '0%', fontSize: 30, textAlign: 'center' }}>
-          {message}
-        </Text>
-        <Text style={{ paddingTop: '5%', fontSize: 30, textAlign: 'center' }}>
-          {from}
-        </Text>
-        <View>
-          <TouchableOpacity
-            style={styles.useVideo}
-            title="yes"
-            onPress={() => {
-              navigation.navigate('PNGQR', { toWhom, from, message, hiroUri });
-            }}
-          >
-            <Text
-              style={{
-                color: 'black',
-                alignSelf: 'center',
-                fontSize: 15,
-                textAlign: 'center',
 
-                marginTop: '25%',
-              }}
-            >
-              send
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.retake}
-            title="no"
-            onPress={() => {
-              navigation.navigate('MessagePage');
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 15,
-                textAlign: 'center',
-                color: 'black',
-                alignSelf: 'center',
-
-                marginTop: '25%',
-              }}
-            >
-              Reset everything
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+      <ViewShot ref={viewShotRef} style={styles.images}>
+        <Image
+          onLoad={onImageLoad}
+          style={styles.hiro}
+          source={{
+            uri:
+              'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png',
+          }}
+        />
+        <QRCode
+          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
+          size={400}
+          quietZone={530}
+          backgroundColor="transparent"
+        />
+      </ViewShot>
+    </ScrollView>
   );
 }
