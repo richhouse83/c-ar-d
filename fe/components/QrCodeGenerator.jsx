@@ -14,12 +14,12 @@ import { RNS3 } from 'react-native-upload-aws-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { SelfBuildingSquareSpinner } from 'react-native-epic-spinners';
 import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
-import PNGQR from './PNGQR';
 import SendButton from './SendButton';
 
 const styles = StyleSheet.create({
   images: {
     width: '90%',
+    height: 400,
     alignItems: 'center',
   },
   hiro: {
@@ -29,9 +29,12 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
   },
+  uploadText: {
+    margin: 20,
+  },
   upload: {
     width: '90%',
-    padding: '8%',
+
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: '#e9e998',
@@ -42,19 +45,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#feffff',
     borderRadius: 10,
     alignItems: 'center',
+    padding: 20,
   },
   text: {
     fontSize: 30,
   },
+  messageText: {
+    padding: 20,
+  },
   container: {
-    height: '120%',
+    height: '130%',
     marginTop: '15%',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingRight: '2%',
     paddingLeft: '2%',
     backgroundColor: '#f0ebef',
-
+    paddingBottom: 50,
     width: '100%',
   },
 
@@ -156,15 +163,17 @@ export default function QrCodeGenerator({ navigation, route }) {
         </Text>
       </View>
       <View style={styles.messages}>
-        <Text style={styles.text}>Your message reads</Text>
-        <Text style={styles.text}>{toWhom}</Text>
-        <Text style={styles.text}>{message}</Text>
-        <Text style={styles.text}>{from}</Text>
+        <Text style={[styles.text, styles.messageText]}>
+          Your message reads:
+        </Text>
+        <Text style={[styles.text, styles.messageText]}>Dear {toWhom}</Text>
+        <Text style={[styles.text, styles.messageText]}>{message}</Text>
+        <Text style={[styles.text, styles.messageText]}>{from}</Text>
       </View>
       <TextInput
         style={{
           textAlign: 'center',
-          fontSize: 18,
+          fontSize: 30,
           backgroundColor: '#d2eff1',
           height: '7%',
           width: '90%',
@@ -188,7 +197,7 @@ export default function QrCodeGenerator({ navigation, route }) {
             navigation.navigate('MessagePage');
           }}
         >
-          <Text>Edit</Text>
+          <Text style={styles.text}>Edit</Text>
         </TouchableOpacity>
         <SendButton
           email={sendEmail}
@@ -209,8 +218,8 @@ export default function QrCodeGenerator({ navigation, route }) {
         />
         <QRCode
           value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
-          size={400}
-          quietZone={500}
+          size={326}
+          quietZone={350}
           backgroundColor="transparent"
         />
       </ViewShot>
