@@ -17,7 +17,7 @@ export default class SendButton extends React.Component {
         title="Send Mail"
         onPress={this.handleEmail}
       >
-        <Text>send</Text>
+        <Text style={{ fontSize: 30 }}>Send</Text>
       </TouchableOpacity>
     );
   }
