@@ -4,12 +4,11 @@ import {
   View,
   TouchableWithoutFeedback,
   TouchableOpacity,
-  Text,
   StyleSheet,
   Dimensions,
   SafeAreaView,
 } from 'react-native';
-import * as MediaLibrary from 'expo-media-library';
+
 import { Ionicons } from '@expo/vector-icons';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 
