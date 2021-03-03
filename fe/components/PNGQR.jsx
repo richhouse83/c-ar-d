@@ -7,7 +7,9 @@ import {
   Image,
   Text,
   TextInput,
+  TouchableOpacity,
 } from 'react-native';
+
 import SendButton from './SendButton';
 
 const styles = StyleSheet.create({
@@ -51,7 +53,15 @@ export default function Next({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <Button
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#d2eff1',
+          height: '15%',
+          width: '90%',
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
         title="Click here to see your AR message"
         onPress={() => {
           Linking.openURL(
@@ -63,8 +73,22 @@ export default function Next({ navigation, route }) {
             alert('Failed to open page');
           });
         }}
-      />
+      >
+        <Text style={{ fontSize: 20 }}>Click here to see your AR message</Text>
+      </TouchableOpacity>
+
       <TextInput
+        style={{
+          textAlign: 'center',
+          fontSize: 18,
+          backgroundColor: '#d2eff1',
+          height: '15%',
+          width: '90%',
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '20%',
+        }}
         placeholder="recipient email"
         onChangeText={(text) => {
           setSendEmail(text);
