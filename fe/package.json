@@ -12,6 +12,7 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
+    "@unimodules/core": "^7.0.0",
     "expo": "^40.0.1",
     "expo-av": "~8.7.0",
     "expo-camera": "^10.0.0",
@@ -41,6 +42,7 @@
     "react-native-upload-aws-s3": "^0.8.1",
     "react-native-view-shot": "^3.1.2",
     "react-native-web": "~0.13.12",
+    "unimodules-permissions-interface": "^6.0.0",
     "uuid": "^3.4.0"
   },
   "devDependencies": {

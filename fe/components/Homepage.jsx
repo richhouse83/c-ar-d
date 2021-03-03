@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from 'react-native';
 
 export default function Homepage({ navigation, route }) {
@@ -15,7 +16,10 @@ export default function Homepage({ navigation, route }) {
       source={require('../assets/background.jpg')}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>C-AR-D</Text>
+        <Image
+          style={styles.logoMain}
+          source={require('../components/Logo.png')}
+        />
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
             title="!"
@@ -38,17 +42,21 @@ export default function Homepage({ navigation, route }) {
 }
 const createBtnStyle = {
   backgroundColor: '#80CEE1',
+  height: 100,
   width: 300,
   position: 'absolute',
-  top: 300,
-  borderRadius: 50,
+  top: 150,
+  borderRadius: 40,
+  justifyContent: 'center',
 };
 const scanBtnStyle = {
   backgroundColor: '#DEA5A4',
+  height: 100,
   width: 300,
   position: 'absolute',
-  top: 380,
-  borderRadius: 50,
+  top: 300,
+  borderRadius: 40,
+  justifyContent: 'center',
 };
 
 const styles = StyleSheet.create({
@@ -59,17 +67,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  title: {
-    position: 'absolute',
-    top: 150,
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
   text: {
     color: 'white',
     fontSize: 30,
     textAlign: 'center',
     fontFamily: 'Arial',
+  },
+  logoMain: {
+    resizeMode: 'contain',
+    height: '12%',
+    top: '25%',
+    left: '-1.3%',
   },
 });
