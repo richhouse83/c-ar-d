@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import ViewShot from 'react-native-view-shot';
@@ -13,6 +14,8 @@ import { RNS3 } from 'react-native-upload-aws-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { SelfBuildingSquareSpinner } from 'react-native-epic-spinners';
 import { AWS_ACCESS_ID, AWS_SECRET_ID } from '../passkeys';
+import PNGQR from './PNGQR';
+import SendButton from './SendButton';
 
 const styles = StyleSheet.create({
   images: {
@@ -27,13 +30,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   upload: {
-    marginTop: '15%',
     width: '90%',
-    height: '10%',
+    padding: '8%',
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: '#e9e998',
-    marginBottom: '1%',
     borderRadius: 10,
   },
   messages: {
@@ -46,12 +47,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   container: {
+    height: '120%',
+    marginTop: '15%',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingRight: '2%',
     paddingLeft: '2%',
     backgroundColor: '#f0ebef',
-    height: '100%',
+
     width: '100%',
   },
 
@@ -84,7 +87,9 @@ export default function QrCodeGenerator({ navigation, route }) {
   const [hiroUri, setHiroUri] = useState('');
   const [uploaded, setUploaded] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [sendEmail, setSendEmail] = useState('');
 
+  const browserLink = `https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`;
   const { toWhom, from, message, videoUri } = route.params;
 
   const fileName = uuidv4();
@@ -156,6 +161,25 @@ export default function QrCodeGenerator({ navigation, route }) {
         <Text style={styles.text}>{message}</Text>
         <Text style={styles.text}>{from}</Text>
       </View>
+      <TextInput
+        style={{
+          textAlign: 'center',
+          fontSize: 18,
+          backgroundColor: '#d2eff1',
+          height: '7%',
+          width: '90%',
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '5%',
+          marginTop: '5%',
+        }}
+        placeholder="recipient email"
+        onChangeText={(text) => {
+          setSendEmail(text);
+        }}
+      />
+
       <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.edit}
@@ -166,20 +190,12 @@ export default function QrCodeGenerator({ navigation, route }) {
         >
           <Text>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.confirm}
-          title="yes"
-          onPress={() => {
-            navigation.navigate('PNGQR', {
-              toWhom,
-              from,
-              message,
-              hiroUri,
-            });
-          }}
-        >
-          <Text>send</Text>
-        </TouchableOpacity>
+        <SendButton
+          email={sendEmail}
+          browserLink={browserLink}
+          hiroUri={hiroUri}
+          {...route.params}
+        />
       </View>
 
       <ViewShot ref={viewShotRef} style={styles.images}>
@@ -194,7 +210,7 @@ export default function QrCodeGenerator({ navigation, route }) {
         <QRCode
           value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
           size={400}
-          quietZone={530}
+          quietZone={500}
           backgroundColor="transparent"
         />
       </ViewShot>
