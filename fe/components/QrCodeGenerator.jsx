@@ -132,12 +132,7 @@ export default function QrCodeGenerator({ navigation, route }) {
   };
 
   useEffect(() => {
-    if (!uploaded) {
-      setTimeout(() => {
-        setUploaded(true);
-      }, 3000);
-      // uploadToS3(videoUri);
-    }
+    uploadToS3(videoUri);
   }, []);
 
   return (

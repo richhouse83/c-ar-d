@@ -59,7 +59,7 @@ export default class MessagePage extends Component {
         <TextInput
           style={{
             textAlign: 'center',
-            height: '8%',
+
             marginTop: '20%',
             fontSize: 30,
             backgroundColor: '#EAE8FF',
