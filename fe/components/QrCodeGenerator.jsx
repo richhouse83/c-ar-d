@@ -95,11 +95,9 @@ export default function QrCodeGenerator({ navigation, route }) {
   const [uploaded, setUploaded] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [sendEmail, setSendEmail] = useState('');
-
-  const browserLink = `https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4&message=Happy%20Birthday%20${toWhom}%21`;
   const { toWhom, from, message, videoUri } = route.params;
-
   const fileName = uuidv4();
+  const browserLink = `https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`;
 
   const onImageLoad = () => {
     viewShotRef.current.capture().then((imguri) => {
@@ -139,7 +137,12 @@ export default function QrCodeGenerator({ navigation, route }) {
   };
 
   useEffect(() => {
-    uploadToS3(videoUri);
+    if (!uploaded) {
+      setTimeout(() => {
+        setUploaded(true);
+      }, 3000);
+      // uploadToS3(videoUri);
+    }
   }, []);
 
   return (
@@ -213,7 +216,7 @@ export default function QrCodeGenerator({ navigation, route }) {
           }}
         />
         <QRCode
-          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4&message=Happy%20Birthday%20${toWhom}%21`}
+          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4`}
           size={326}
           quietZone={350}
           backgroundColor="transparent"
