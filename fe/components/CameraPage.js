@@ -17,7 +17,7 @@ export default class CameraPage extends React.Component {
     hasCameraPermission: null,
     recorded: false,
     recording: false,
-    cameraType: Camera.Constants.Type.back,
+    cameraType: Camera.Constants.Type.front,
     flashMode: Camera.Constants.FlashMode.off,
     preview: '',
   };
@@ -167,13 +167,13 @@ export default class CameraPage extends React.Component {
   };
   handleType = () => {
     const { cameraType } = this.state;
-    if (cameraType === Camera.Constants.Type.front) {
-      this.setState({
-        cameraType: Camera.Constants.Type.back,
-      });
-    } else if (cameraType === Camera.Constants.Type.back) {
+    if (cameraType === Camera.Constants.Type.back) {
       this.setState({
         cameraType: Camera.Constants.Type.front,
+      });
+    } else if (cameraType === Camera.Constants.Type.front) {
+      this.setState({
+        cameraType: Camera.Constants.Type.back,
       });
     }
   };
