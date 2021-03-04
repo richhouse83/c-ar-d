@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import ViewShot from 'react-native-view-shot';
@@ -143,9 +144,9 @@ export default function QrCodeGenerator({ navigation, route }) {
   useEffect(() => {
     if (!uploaded) {
       // setTimeout(() => {
-      //   setUploaded(true);
+      setUploaded(true);
       // }, 3000);
-      uploadToS3(videoUri);
+      // uploadToS3(videoUri);
     }
   }, []);
 
@@ -206,6 +207,7 @@ export default function QrCodeGenerator({ navigation, route }) {
           email={sendEmail}
           browserLink={browserLink}
           hiroUri={hiroUri}
+          navigation={navigation}
           {...route.params}
         />
       </View>
