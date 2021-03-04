@@ -19,7 +19,7 @@ import SendButton from './SendButton';
 
 const styles = StyleSheet.create({
   images: {
-    width: '90%',
+    width: '100%',
     height: 400,
     alignItems: 'center',
   },
@@ -29,6 +29,10 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     flex: 1,
+  },
+  qrcode: {
+    position: 'absolute',
+    top: 105,
   },
   uploadText: {
     margin: 20,
@@ -216,12 +220,13 @@ export default function QrCodeGenerator({ navigation, route }) {
               'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png',
           }}
         />
-        <QRCode
-          value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4&message=Happy%20Birthday%20${toWhom}%21`}
-          size={326}
-          quietZone={350}
-          backgroundColor="transparent"
-        />
+        <View style={styles.qrcode}>
+          <QRCode
+            value={`https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4&message=Happy%20Birthday%20${toWhom}%21`}
+            size={110}
+            backgroundColor="transparent"
+          />
+        </View>
       </ViewShot>
     </ScrollView>
   );
