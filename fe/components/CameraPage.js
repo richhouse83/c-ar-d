@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import * as Permissions from 'expo-permissions';
 import { Video } from 'expo-av';
-
+import { v4 as uuidv4 } from 'uuid';
 import { Camera } from 'expo-camera';
 
 import styles from './styles';
@@ -118,6 +118,7 @@ export default class CameraPage extends React.Component {
                   this.props.navigation.navigate('QRcode', {
                     ...this.props.route.params,
                     videoUri: this.state.previewVideo,
+                    fileName: uuidv4(),
                   });
                   this.setState({ preview: 'liked' });
                 }}

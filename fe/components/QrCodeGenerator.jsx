@@ -7,7 +7,6 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
-  Alert,
 } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import ViewShot from 'react-native-view-shot';
@@ -100,8 +99,9 @@ export default function QrCodeGenerator({ navigation, route }) {
   const [uploaded, setUploaded] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [sendEmail, setSendEmail] = useState('');
-  const { toWhom, from, message, videoUri } = route.params;
-  const fileName = uuidv4();
+
+  const { toWhom, from, message, videoUri, fileName } = route.params;
+
   const browserLink = `https://richhouse83.github.io/c-ar-d-viewer/?video=${fileName}.mp4&message=Happy%20Birthday%20${toWhom}%21`;
 
   const onImageLoad = () => {
@@ -143,10 +143,7 @@ export default function QrCodeGenerator({ navigation, route }) {
 
   useEffect(() => {
     if (!uploaded) {
-      // setTimeout(() => {
-      setUploaded(true);
-      // }, 3000);
-      // uploadToS3(videoUri);
+      uploadToS3(videoUri);
     }
   }, []);
 
