@@ -50,13 +50,15 @@ export default class MessagePage extends Component {
       >
         <TextInput
           style={{
+            paddingTop: '5%',
             textAlign: 'center',
             fontSize: 30,
-            marginTop: '5%',
             height: '8%',
             backgroundColor: '#d2eff1',
             borderRadius: 10,
           }}
+          multiline={true}
+          maxLength={50}
           placeholder="Dear..."
           onChangeText={(event) => {
             this.setState({ toWhom: event });
@@ -66,13 +68,15 @@ export default class MessagePage extends Component {
         <TextInput
           style={{
             textAlign: 'center',
-
+            paddingTop: '40%',
             fontSize: 30,
             height: '40%',
             marginTop: '20%',
             backgroundColor: '#feffff',
             borderRadius: 10,
           }}
+          multiline={true}
+          maxLength={200}
           placeholder="Your message"
           onChangeText={(event) => {
             this.setState({ message: event });
@@ -82,12 +86,13 @@ export default class MessagePage extends Component {
         <TextInput
           style={{
             textAlign: 'center',
-
             marginTop: '20%',
             fontSize: 30,
             backgroundColor: '#EAE8FF',
             borderRadius: 10,
           }}
+          multiline={true}
+          maxLength={50}
           placeholder="From..."
           onChangeText={(event) => {
             this.setState({ from: event });
