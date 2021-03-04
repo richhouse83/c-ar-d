@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  Alert,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -13,6 +14,24 @@ export default class MessagePage extends Component {
     toWhom: '',
     message: '',
     from: '',
+  };
+  componentDidMount() {
+    this.userInstructions();
+  }
+  userInstructions = () => {
+    Alert.alert(
+      'Create a c-AR-d',
+      'Fill in all the fields, and press the record video button',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ],
+      { cancelable: false },
+    );
   };
   render() {
     const { toWhom, message, from } = this.state;
