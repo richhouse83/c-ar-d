@@ -22,6 +22,9 @@ export default class CameraPage extends React.Component {
     preview: '',
   };
   async componentDidMount() {
+    if (!this.props.route.params) {
+      this.setState({ cameraType: Camera.Constants.Type.back });
+    }
     /*     await ScreenOrientation.lockAsync(
       ScreenOrientation.OrientationLock.LANDSCAPE,
     ); */
@@ -43,6 +46,7 @@ export default class CameraPage extends React.Component {
     }
 
     const isRecordingMode = this.props.route.params;
+
     return (
       <>
         {!this.state.recorded ? (
