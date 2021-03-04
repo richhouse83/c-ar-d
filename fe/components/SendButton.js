@@ -24,7 +24,6 @@ export default class SendButton extends React.Component {
 
   handleEmail = () => {
     const { hiroUri, email, toWhom, message, from, browserLink } = this.props;
-    console.log(this.props);
 
     MailComposer.composeAsync({
       subject: 'Your AR Birthday cARd',

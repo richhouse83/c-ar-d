@@ -8,8 +8,6 @@ import { Camera } from 'expo-camera';
 import styles from './styles';
 import CameraToolbar from './CameraToolbar';
 
-import * as ScreenOrientation from 'expo-screen-orientation';
-
 export default class CameraPage extends React.Component {
   state = {
     video: null,
@@ -22,9 +20,6 @@ export default class CameraPage extends React.Component {
     preview: '',
   };
   async componentDidMount() {
-    /*     await ScreenOrientation.lockAsync(
-      ScreenOrientation.OrientationLock.LANDSCAPE,
-    ); */
     const { status, permissions } = await Permissions.askAsync(
       Permissions.CAMERA,
     );
@@ -35,7 +30,6 @@ export default class CameraPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.previewVideo);
     const { hasCameraPermission } = this.state;
 
     if (hasCameraPermission === null) {
@@ -60,7 +54,6 @@ export default class CameraPage extends React.Component {
                     ) &&
                     !isRecordingMode
                   ) {
-                    console.log(isRecordingMode);
                     await Linking.openURL(data.data);
                   }
                 }}
@@ -153,8 +146,6 @@ export default class CameraPage extends React.Component {
         recorded: true,
         previewVideo: video.uri,
       });
-
-      console.log(video.uri);
     } else if (recording === true) {
       video = this.camera.stopRecording();
 

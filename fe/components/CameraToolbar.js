@@ -18,8 +18,6 @@ export default class CameraToolbar extends Component {
   state = {};
 
   render() {
-    console.log(this.props.scan);
-
     return (
       <SafeAreaView>
         <Grid style={styles.bottomToolbar}>

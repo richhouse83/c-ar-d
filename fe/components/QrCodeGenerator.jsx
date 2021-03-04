@@ -1,3 +1,8 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
 import React, { useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
@@ -106,7 +111,6 @@ export default function QrCodeGenerator({ navigation, route }) {
   };
 
   const uploadToS3 = async (video) => {
-    console.log('attempting to upload...');
     const file = {
       uri: video,
       name: `${fileName}.mov`,
@@ -124,14 +128,11 @@ export default function QrCodeGenerator({ navigation, route }) {
     try {
       const response = await RNS3.put(file, options);
       if (response.status === 201) {
-        console.log('Success: ', response.body);
         setUploaded(true);
       } else {
-        console.log('Failed to upload image to S3: ', response);
         setErrorMsg('Upload failed, please try again');
       }
     } catch (error) {
-      console.log(error);
       setErrorMsg(error);
     }
   };
@@ -164,7 +165,10 @@ export default function QrCodeGenerator({ navigation, route }) {
         <Text style={[styles.text, styles.messageText]}>
           Your message reads:
         </Text>
-        <Text style={[styles.text, styles.messageText]}>Dear {toWhom}</Text>
+        <Text style={[styles.text, styles.messageText]}>
+          Dear
+          {toWhom}
+        </Text>
         <Text style={[styles.text, styles.messageText]}>{message}</Text>
         <Text style={[styles.text, styles.messageText]}>{from}</Text>
       </View>
@@ -190,7 +194,7 @@ export default function QrCodeGenerator({ navigation, route }) {
       <View style={styles.buttons}>
         <TouchableOpacity
           style={styles.edit}
-          disabled={uploaded ? true : false}
+          disabled={!!uploaded}
           title="no"
           onPress={() => {
             navigation.navigate('MessagePage');

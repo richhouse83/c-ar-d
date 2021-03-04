@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   ImageBackground,
@@ -8,56 +10,6 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-
-export default function Homepage({ navigation, route }) {
-  return (
-    <ImageBackground
-      style={styles.background}
-      source={require('../assets/background.jpg')}
-    >
-      <View style={styles.container}>
-        <Image
-          style={styles.logoMain}
-          source={require('../components/Logo.png')}
-        />
-        <SafeAreaView style={createBtnStyle}>
-          <TouchableOpacity
-            title="!"
-            onPress={() => navigation.navigate('MessagePage')}
-          >
-            <Text style={styles.text}>Create a C-AR-D ✏️</Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-        <SafeAreaView style={scanBtnStyle}>
-          <TouchableOpacity
-            title="Scan a C-AR-D"
-            onPress={() => navigation.navigate('Camera')}
-          >
-            <Text style={styles.text}>Scan a C-AR-D 📷</Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-      </View>
-    </ImageBackground>
-  );
-}
-const createBtnStyle = {
-  backgroundColor: '#80CEE1',
-  height: 100,
-  width: 300,
-  position: 'absolute',
-  top: 150,
-  borderRadius: 40,
-  justifyContent: 'center',
-};
-const scanBtnStyle = {
-  backgroundColor: '#DEA5A4',
-  height: 100,
-  width: 300,
-  position: 'absolute',
-  top: 300,
-  borderRadius: 40,
-  justifyContent: 'center',
-};
 
 const styles = StyleSheet.create({
   background: { flex: 1, justifyContent: 'flex-end' },
@@ -80,3 +32,51 @@ const styles = StyleSheet.create({
     left: '-1.3%',
   },
 });
+
+const createBtnStyle = {
+  backgroundColor: '#80CEE1',
+  height: 100,
+  width: 300,
+  position: 'absolute',
+  top: 150,
+  borderRadius: 40,
+  justifyContent: 'center',
+};
+const scanBtnStyle = {
+  backgroundColor: '#DEA5A4',
+  height: 100,
+  width: 300,
+  position: 'absolute',
+  top: 300,
+  borderRadius: 40,
+  justifyContent: 'center',
+};
+
+export default function Homepage({ navigation }) {
+  return (
+    <ImageBackground
+      style={styles.background}
+      source={require('../assets/background.jpg')}
+    >
+      <View style={styles.container}>
+        <Image style={styles.logoMain} source={require('./Logo.png')} />
+        <SafeAreaView style={createBtnStyle}>
+          <TouchableOpacity
+            title="!"
+            onPress={() => navigation.navigate('MessagePage')}
+          >
+            <Text style={styles.text}>Create a C-AR-D ✏️</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+        <SafeAreaView style={scanBtnStyle}>
+          <TouchableOpacity
+            title="Scan a C-AR-D"
+            onPress={() => navigation.navigate('Camera')}
+          >
+            <Text style={styles.text}>Scan a C-AR-D 📷</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </View>
+    </ImageBackground>
+  );
+}
