@@ -23,9 +23,7 @@ export default function Homepage({ navigation, route }) {
         <SafeAreaView style={createBtnStyle}>
           <TouchableOpacity
             title="!"
-            onPress={() =>
-              navigation.navigate('MessagePage', { resetPage: false })
-            }
+            onPress={() => navigation.navigate('MessagePage')}
           >
             <Text style={styles.text}>Create a C-AR-D ✏️</Text>
           </TouchableOpacity>
