@@ -6,6 +6,7 @@ import CameraPage from './components/CameraPage';
 import Homepage from './components/Homepage';
 import QrCodeGenerator from './components/QrCodeGenerator';
 import MessagePage from './components/MessagePage';
+import Success from './components/Success';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,11 @@ const App = () => (
         name="QRcode"
         component={QrCodeGenerator}
         options={{ title: 'QrCode' }}
+      />
+      <Stack.Screen
+        name="Success"
+        component={Success}
+        options={{ title: 'Success' }}
       />
     </Stack.Navigator>
   </NavigationContainer>
