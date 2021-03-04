@@ -207,6 +207,7 @@ export default function QrCodeGenerator({ navigation, route }) {
           email={sendEmail}
           browserLink={browserLink}
           hiroUri={hiroUri}
+          navigation={navigation}
           {...route.params}
         />
       </View>

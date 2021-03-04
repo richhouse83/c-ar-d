@@ -41,5 +41,6 @@ export default class SendButton extends React.Component {
       isHtml: true,
       attachments: ['file://' + hiroUri],
     });
+    this.props.navigation.navigate('Success');
   };
 }
