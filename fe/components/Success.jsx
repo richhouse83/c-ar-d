@@ -30,7 +30,9 @@ export default function Success({ navigation, route }) {
         }}
         title="no"
         onPress={() => {
-          navigation.navigate('MessagePage', { resetPage: true });
+          const { reset } = route.params;
+          reset();
+          navigation.navigate('MessagePage');
         }}
       >
         <Text style={{ fontSize: 25 }}>Send Another Card !</Text>

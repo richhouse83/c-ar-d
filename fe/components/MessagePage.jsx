@@ -18,6 +18,10 @@ export default class MessagePage extends Component {
   componentDidMount() {
     this.userInstructions();
   }
+
+  reset = () => {
+    this.setState({ toWhom: '', message: '', from: '' });
+  };
   userInstructions = () => {
     Alert.alert(
       'Create a c-AR-d',
@@ -95,7 +99,10 @@ export default class MessagePage extends Component {
             disabled={!toWhom || !message || !from}
             title=""
             onPress={() =>
-              this.props.navigation.navigate('Camera', { ...this.state })
+              this.props.navigation.navigate('Camera', {
+                ...this.state,
+                reset: this.reset,
+              })
             }
           >
             <Text style={styles.text}>
