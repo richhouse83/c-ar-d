@@ -23,7 +23,15 @@ export default class SendButton extends React.Component {
   }
 
   handleEmail = () => {
-    const { hiroUri, email, toWhom, message, from, browserLink } = this.props;
+    const {
+      hiroUri,
+      email,
+      toWhom,
+      message,
+      from,
+      browserLink,
+      reset,
+    } = this.props;
     console.log(this.props);
 
     MailComposer.composeAsync({
@@ -41,6 +49,6 @@ export default class SendButton extends React.Component {
       isHtml: true,
       attachments: ['file://' + hiroUri],
     });
-    this.props.navigation.navigate('Success');
+    this.props.navigation.navigate('Success', { reset });
   };
 }
