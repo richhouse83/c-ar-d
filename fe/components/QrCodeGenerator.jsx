@@ -143,10 +143,7 @@ export default function QrCodeGenerator({ navigation, route }) {
 
   useEffect(() => {
     if (!uploaded) {
-      // setTimeout(() => {
-      setUploaded(true);
-      // }, 3000);
-      // uploadToS3(videoUri);
+      uploadToS3(videoUri);
     }
   }, []);
 
@@ -169,7 +166,7 @@ export default function QrCodeGenerator({ navigation, route }) {
         <Text style={[styles.text, styles.messageText]}>
           Your message reads:
         </Text>
-        <Text style={[styles.text, styles.messageText]}>Dear {toWhom}</Text>
+        <Text style={[styles.text, styles.messageText]}>{toWhom}</Text>
         <Text style={[styles.text, styles.messageText]}>{message}</Text>
         <Text style={[styles.text, styles.messageText]}>{from}</Text>
       </View>

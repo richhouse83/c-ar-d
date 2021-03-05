@@ -27,14 +27,14 @@ export default class SendButton extends React.Component {
     console.log(this.props);
 
     MailComposer.composeAsync({
-      subject: 'Your AR Birthday cARd',
+      subject: 'Your AR Birthday C-AR-D',
       recipients: [email],
       body: `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align: center;background-color:#d2eff1;padding-top:10%">
       <b style="padding-top:10%;font-size:36px;">Dear ${toWhom}</b><br>
       <b>${from}</b>
       <p style="margin-top:2%;align-self:center;justify-self:center;">has sent you the following message</p><br>
       <p style="margin:2%;padding:10%;background-color:#DEA5A4;width:80%;border-radius:50px;">${message}</p>
-      <p style="padding:10%;">to view your message, scan the qr code and follow the instructions, or <a href=${browserLink}>click here</a>.</p>
+      <p style="padding:10%;">To view your message, scan the QR code and follow the instructions, or <a href=${browserLink}>click here</a>.</p>
       </div> 
       
       `,

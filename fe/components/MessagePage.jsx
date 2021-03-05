@@ -20,7 +20,7 @@ export default class MessagePage extends Component {
   }
   userInstructions = () => {
     Alert.alert(
-      'Create a c-AR-d',
+      'Create a C-AR-D',
       'Fill in all the fields, and press the record video button',
       [
         {
@@ -73,7 +73,7 @@ export default class MessagePage extends Component {
           }}
           multiline={true}
           maxLength={200}
-          placeholder="Your message"
+          placeholder="Your message..."
           onChangeText={(event) => {
             this.setState({ message: event });
           }}
@@ -100,7 +100,9 @@ export default class MessagePage extends Component {
             disabled={!toWhom || !message || !from}
             title=""
             onPress={() =>
-              this.props.navigation.navigate('Camera', { ...this.state })
+              this.props.navigation.navigate('Camera', {
+                ...this.state,
+              })
             }
           >
             <Text style={styles.text}>

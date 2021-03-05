@@ -17,7 +17,7 @@ export default function Success({ navigation, route }) {
         width: '100%',
       }}
     >
-      <Text style={{ fontSize: 25 }}>Successfully sent your card !</Text>
+      <Text style={{ fontSize: 25 }}>Successfully sent your C-AR-D!</Text>
       <TouchableOpacity
         style={{
           backgroundColor: '#d2eff1',
@@ -33,7 +33,7 @@ export default function Success({ navigation, route }) {
           navigation.navigate('MessagePage', { resetPage: true });
         }}
       >
-        <Text style={{ fontSize: 25 }}>Send Another Card !</Text>
+        <Text style={{ fontSize: 25 }}>Send another C-AR-D!</Text>
       </TouchableOpacity>
     </View>
   );
